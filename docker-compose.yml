@@ -1,0 +1,8 @@
+version: '3.7'
+services:
+    backend:
+        restart: always
+        build: ./backend
+        command: gunicorn app:app --workers=2 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000
+        ports:
+            - '8000:8000'

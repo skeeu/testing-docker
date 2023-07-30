@@ -6,6 +6,9 @@ services:
         command: gunicorn main:app --workers=2 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000
         ports:
             - '8000:8000'
+        networks:
+            - frontend-to-backend
+
     frontend:
         build: ./frontend
         restart: always
@@ -13,3 +16,8 @@ services:
             - '80:80'
         depends_on:
             - backend
+        networks:
+            - frontend-to-backend
+
+networks:
+    frontend-to-backend:

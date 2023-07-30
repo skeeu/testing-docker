@@ -1,13 +1,20 @@
 from fastapi import FastAPI
 
-app = FastAPI(root_path="/api")
+app = FastAPI()
+subapi = FastAPI()
+app.mount("/api", subapi)
 
 
-@app.get("/")
+@subapi.get("/")
 async def index():
     return {"message": "Hello World"}
 
 
-@app.get("/hello")
+@subapi.get("/hello")
 async def hello():
     return {"message": "Hello World"}
+
+
+@subapi.get("/lol")
+async def heo():
+    return {"message": "lol"}

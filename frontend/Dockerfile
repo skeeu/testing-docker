@@ -14,6 +14,6 @@ FROM nginx:1.23.0-alpine
 
 COPY --from=build /frontend/build/ /usr/share/nginx/html
 
-COPY ../nginx/nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
 CMD ["nginx", "-g", "daemon off;"]

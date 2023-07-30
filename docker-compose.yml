@@ -3,11 +3,11 @@ services:
     backend:
         restart: always
         build: ./backend
-        # command: gunicorn main:app --workers=2 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000
+        command: gunicorn main:app --workers=2 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000
         ports:
             - '8000:8000'
-    nginx:
-        build: ./nginx
+    frontend:
+        build: ./frontend
         restart: always
         ports:
             - '80:80'
